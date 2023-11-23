@@ -13,7 +13,6 @@ export class App {
 
   private config(app: Application) {
     const dataSource = DbConfiguration.getConfig();
-    console.log(dataSource);
     // config database
     dataSource
       .initialize()

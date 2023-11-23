@@ -20,6 +20,7 @@
     "noFallthroughCasesInSwitch": false,
     "paths": {
       "@configs/*": ["src/configurations/*"],
+      "@routes/*": ["src/app/routes/*"],
       "@core/*": ["src/core/*"],
       "@apps/*": ["src/apps/*"],
       "@constants/*": ["src/commons/constants/*"],

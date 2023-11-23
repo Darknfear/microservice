@@ -3,6 +3,7 @@ import { join } from 'path';
 
 export class Configuration {
   constructor() {
-    config({ path: join(__dirname, '**', '.env.development') })
+    const path = join(__dirname, '**', `.env.${process.env.NODE_ENV || 'development'}`);
+    config({ path: path });
   }
 }
