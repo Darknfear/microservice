@@ -8,7 +8,17 @@
     "build": "rm -rf dist && tsc -p tsconfig.json",
     "prod": "node dist/main.js",
     "start": "ts-node ./src/main.ts",
-    "start:dev": "npm run build && nodemon dist/main.js"
+    "start:dev": "npm run build && nodemon dist/main.js",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "migration:generate": "npm run typeorm migration:generate -- -d src/configurations/typeorm.config.ts",
+    "migration:create": "npm run typeorm migration:create",
+    "migration:run": "npm run typeorm migration:run -- -d src/configurations/typeorm.config.ts",
+    "migration:revert": "npm run typeorm migration:revert -- -d src/configurations/typeorm.config.ts",
+    "migration:show": "npm run typeorm migration:show -- -d src/configurations/typeorm.config.ts",
+    "seed:create": "npm run typeorm migration:create",
+    "seed:run": "npm run typeorm migration:run -- -d src/configurations/typeorm-seed.config.ts",
+    "seed:revert": "npm run typeorm migration:revert -- -d src/configurations/typeorm-seed.config.ts",
+    "seed:show": "npm run typeorm migration:show -- -d src/configurations/typeorm-seed.config.ts"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +33,7 @@
     "module-alias": "^2.2.3",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
+    "pg": "^8.11.3",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.17"
   },
@@ -31,6 +42,7 @@
     "@types/cors": "^2.8.16",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.21",
+    "@types/http-errors": "^2.0.4",
     "@types/jsonwebtoken": "^9.0.5",
     "@types/node": "^20.9.1",
     "@types/passport": "^1.0.16",
@@ -38,6 +50,7 @@
     "concurrently": "^8.2.2",
     "nodemon": "^3.0.1",
     "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.2.2"
   },
   "_moduleAliases": {
@@ -53,6 +66,8 @@
     "@utilities": "dist/commons/utilities",
     "@entities": "dist/databases/entities",
     "@libs": "dist/libs",
-    "@routes/*": "dist/app/routes/*"
+    "@routes": "dist/app/routes",
+    "@controllers": "dist/app/controllers",
+    "@services": "dist/app/services"
   }
 }

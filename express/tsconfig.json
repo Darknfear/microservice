@@ -20,6 +20,8 @@
     "noFallthroughCasesInSwitch": false,
     "paths": {
       "@configs/*": ["src/configurations/*"],
+      "@controllers/*": ["src/app/controllers/*"],
+      "@services/*": ["src/app/services/*"],
       "@routes/*": ["src/app/routes/*"],
       "@core/*": ["src/core/*"],
       "@apps/*": ["src/apps/*"],

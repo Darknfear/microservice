@@ -4,6 +4,8 @@ import cors, { CorsOptions } from 'cors';
 import bodyParser from 'body-parser';
 import { DbConfiguration } from '@configs/database.config';
 import { join } from 'path';
+import rootRoute from './routes';
+import { errorMiddleware } from '@core/middlewares/error.middleware';
 
 export class App {
   static appServer: App | undefined;
@@ -28,6 +30,11 @@ export class App {
         };
         app.use(cors(corsOptions));
 
+        // route
+        app.use('/api', rootRoute);
+
+        // error handle
+        app.use(errorMiddleware);
         // listen
         app.listen(process.env.PORT, () => {
           console.log(`Server is running in port ${process.env.PORT}...`);
