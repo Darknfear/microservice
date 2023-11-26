@@ -1,9 +1,12 @@
 import { Request } from 'express';
-interface User {
-  id?: string;
-  email?: string;
-  role?: any;
+import { JwtPayload } from 'jsonwebtoken';
+interface UserJwtPayload extends JwtPayload {
+  user: {
+    id?: string;
+    email?: string;
+    role?: any;
+  };
 }
 export interface ICustomRequest extends Request {
-  user: User;
+  jwt: UserJwtPayload;
 }
